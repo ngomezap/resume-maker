@@ -1,17 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+const headInfo = {
+  name: 'Ignacio Gomez Aparicio',
+  position: 'Software Engineer'
+}
+
+const sideInfo = {
+  mail: 'igomez.ap@gmail.com',
+  phone: '0034 671197504',
+  linkedin: 'linkedin.com/in/ignacio-gomez-aparicio/'
+}
+
+const education = {
+  degree: 'Industrial Engineering',
+  university: 'University of Cantabria',
+  location: 'Santander',
+  endDate: 'July 2018'
+}
+
+const experience = {
+  position: 'Solar Technician',
+  company: 'Ingeteam UK ltd.',
+  initialDate: 'January 2022',
+  endDate: 'August 2022',
+  description: 'Only engineer in charge of tow solar farms of 5MW and 10MW'
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App 
+    headInfo = {headInfo}
+    sideInfo = {sideInfo}
+    education = {education}
+    experience = {experience}/>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
