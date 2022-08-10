@@ -2,8 +2,18 @@ import React from "react";
 
 export class Education extends React.Component{
 
+    constructor(props){
+        super(props);
+        this.state = {
+            degree: 'Industrial Engineering',
+            university: 'University of Cantabria',
+            location: 'Santander',
+            endDate: 'July 2018'
+        }
+    }
+
     render(){
-        const {degree, university, location, endDate} = this.props.info;
+        const {degree, university, location, endDate} = this.state;
         return(
             <section id="education">
                 <h1>Education</h1>

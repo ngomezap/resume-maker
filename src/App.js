@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   render(){
-    const {headInfo, sideInfo, education, experience} = this. props;
+    const {headInfo, sideInfo, education, experience} = this.props;
     return (
       <div>
         <Header info={headInfo}/>
