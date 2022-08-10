@@ -39,21 +39,21 @@ export class Header extends React.Component{
         const toRender = [];
         if(this.state.editMode === 'off'){
             toRender.push(
-                <header id="headInfo">
+                <div>
                     <img src={imgSrc} alt='profile_pic'/>
                     <h1>{name}</h1>
                     <h4>{position}</h4>
-                    <button id='editOn' onClick={this.onEditButton}>Edit</button>
-                </header>
+                    <button id='editHeadBtn' onClick={this.onEditButton}>Edit</button>
+                </div>
             )
         }else{
             toRender.push(
                 <div>
                     <img src={imgSrc} alt='profile_pic'/>
                     <form>
-                        <input id='inputName' type='text' defaultValue={this.state.name}/>
-                        <input id='inputPosition' type='text' defaultValue={this.state.position}/>
-                        <button type='submit' onClick={this.onSubmitButton}>Submit</button>
+                        <input id='inputName' type='text' defaultValue={name}/>
+                        <input id='inputPosition' type='text' defaultValue={position}/>
+                        <button id='submitHeadBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
                     </form>
                 </div>
             )
