@@ -8,7 +8,8 @@ export class Education extends React.Component{
             degree: 'Industrial Engineering',
             university: 'University of Cantabria',
             location: 'Santander',
-            endDate: 'July 2018'
+            endDate: 'July 2018',
+            editMode: 'off'
         }
     }
 

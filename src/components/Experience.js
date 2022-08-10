@@ -9,7 +9,8 @@ export class Experience extends React.Component{
             company: 'Ingeteam UK ltd.',
             initialDate: 'January 2020',
             endDate: 'August 2020',
-            description: 'Only engineer in charge of tow solar farms of 5MW and 10MW'
+            description: 'Only engineer in charge of tow solar farms of 5MW and 10MW',
+            editMode: 'off'
         }
     }
 

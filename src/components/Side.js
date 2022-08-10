@@ -7,7 +7,8 @@ export class Side extends React.Component{
         this.state = {
             mail: 'igomez.ap@gmail.com',
             phone: '0034 671197504',
-            linkedin: 'linkedin.com/in/ignacio-gomez-aparicio/'
+            linkedin: 'linkedin.com/in/ignacio-gomez-aparicio/',
+            editMode: 'off'
         }
     }
 
