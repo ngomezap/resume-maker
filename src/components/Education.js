@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/Education.css'
 
 export class Education extends React.Component{
 

@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/Side.css'
 
 export class Side extends React.Component{
 
@@ -41,21 +42,20 @@ export class Side extends React.Component{
         if(this.state.editMode === 'off'){
             toRender.push(
                 <div>
+                    <button id='editSideBtn' onClick={this.onEditButton}>Edit</button>
                     <h6>Email: {mail}</h6>
                     <h6>Tel: {phone}</h6>
                     <h6>LinkedIn: {linkedin}</h6>
-                    <button id='editSideBtn' onClick={this.onEditButton}>Edit</button>
                 </div>
             )
         }else{
             toRender.push(
                 <div>
                     <form>
+                        <button id='submitSideBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
                         <input id='inputMail' type='text' defaultValue={mail}/>
                         <input id='inputPhone' type='text' defaultValue={phone}/>
-                        <input id='inputLinkedin' type='text' defaultValue={linkedin}/>
-                        
-                        <button id='submitSideBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
+                        <input id='inputLinkedin' type='text' defaultValue={linkedin}/>                        
                     </form>
                 </div>
             )

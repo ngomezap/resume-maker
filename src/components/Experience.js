@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/Experience.css'
 
 export class Experience extends React.Component{
 

@@ -1,8 +1,15 @@
 
+@font-face {
+    font-family: Nunito;
+    src: url('../fonts/Nunito-VariableFont_wght.ttf');
+}
+
 #container{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
+
+    font-family: Arial, Helvetica, sans-serif;
 
     /*---Container position---*/
     width: 80%;
@@ -16,7 +23,7 @@
 
 #sideInfo{
     grid-column: 1;
-    grid-row: 2 / 3;
+    grid-row: 2 / 4;
 }
 
 #education{

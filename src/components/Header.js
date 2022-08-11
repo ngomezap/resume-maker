@@ -1,12 +1,13 @@
 import React from "react";
-
+import '../styles/Header.css';
+import avatar from '../images/avatar.png';
 
 export class Header extends React.Component{
 
     constructor(props){
         super(props);
         this.state = {
-            imgSrc: '#',
+            imgSrc: avatar,
             name: 'Ignacio Gómez Aparicio',
             position: 'Software Developer',
             editMode: 'off'
@@ -40,21 +41,20 @@ export class Header extends React.Component{
         if(this.state.editMode === 'off'){
             toRender.push(
                 <div>
-                    <img src={imgSrc} alt='profile_pic'/>
-                    <h1>{name}</h1>
-                    <h4>{position}</h4>
                     <button id='editHeadBtn' onClick={this.onEditButton}>Edit</button>
+                    <img id='profilePic' src={imgSrc} alt='profile_pic'/>
+                    <h1 id="nameHeader">{name}</h1>
+                    <h4 id="positionHeader">{position}</h4>
                 </div>
             )
         }else{
             toRender.push(
                 <div>
-                    <img src={imgSrc} alt='profile_pic'/>
-                    <form>
-                        <input id='inputName' type='text' defaultValue={name}/>
-                        <input id='inputPosition' type='text' defaultValue={position}/>
-                        <button id='submitHeadBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
-                    </form>
+                    <button id='submitHeadBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
+                    <img id='profilePic' src={imgSrc} alt='profile_pic'/>
+                    <input id='inputName' type='text' defaultValue={name} autoFocus/>
+                    <input id='inputPosition' type='text' defaultValue={position}/>
+                    
                 </div>
             )
         }

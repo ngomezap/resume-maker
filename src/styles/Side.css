@@ -1,0 +1,16 @@
+
+
+#sideInfo{
+    border: 1px black solid;
+}
+
+#sideInfo > div{
+    display: flex;
+    flex-direction: column;
+}
+
+#sideInfo button{
+    width: 6em;
+    margin-left: auto;
+    border: none;
+}
