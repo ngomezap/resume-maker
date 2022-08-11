@@ -24,10 +24,10 @@ export class Education extends React.Component{
 
     onSubmitButton(e){
         e.preventDefault();
-        const degree = e.target.parentNode.querySelector('#inputDegree').value;
-        const university = e.target.parentNode.querySelector('#inputUniversity').value;
-        const location = e.target.parentNode.querySelector('#inputLocation').value;
-        const endDate = e.target.parentNode.querySelector('#inputEndDate').value;
+        const degree = e.target.parentNode.querySelector('.inputDegree').value;
+        const university = e.target.parentNode.querySelector('.inputUniversity').value;
+        const location = e.target.parentNode.querySelector('.inputLocation').value;
+        const endDate = e.target.parentNode.querySelector('.inputEndDate').value;
 
         this.setState({
             degree: degree,
@@ -45,25 +45,23 @@ export class Education extends React.Component{
         if(this.state.editMode === 'off'){
             toRender.push(
                 <div>
-                    <h1>Education</h1>
-                    <h3>{degree}</h3>
-                    <h5>{university}</h5>
-                    <h5>{location}</h5>
-                    <h5>{endDate}</h5>
                     <button id='editEduBtn' onClick={this.onEditButton}>Edit</button>
+                    <h1>Education</h1>
+                    <h3 className="headerDegree">{degree}</h3>
+                    <h5 className="headerUni">{university}</h5>
+                    <h5 className="headerLocal">{location}</h5>
+                    <h5 className="headerEndDate">{endDate}</h5>
                 </div>
             )
         }else{
             toRender.push(
                 <div>
-                    <form>
-                        <input id='inputDegree' type='text' defaultValue={degree}/>
-                        <input id='inputUniversity' type='text' defaultValue={university}/>
-                        <input id='inputLocation' type='text' defaultValue={location}/>
-                        <input id='inputEndDate' type='text' defaultValue={endDate}/>
-                        
-                        <button id='submitEduBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
-                    </form>
+                    <button id='submitEduBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
+                    <h1>Education</h1>
+                    <input className="inputDegree" type='text' defaultValue={degree}/>
+                    <input className='inputUniversity' type='text' defaultValue={university}/>
+                    <input className='inputLocation' type='text' defaultValue={location}/>
+                    <input className='inputEndDate' type='text' defaultValue={endDate}/>
                 </div>
             )
         }

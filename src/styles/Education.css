@@ -3,3 +3,55 @@
 #education{
     border: 1px black solid;
 }
+
+#education > div{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2%;
+}
+
+#education button{
+    margin-left: auto;
+    border: none;
+    width: 6em;
+}
+
+#education h1{
+    margin: 2%;
+}
+
+.headerDegree{
+    margin: 0;
+    margin-left: 2%;
+}
+
+#education h5{
+    margin: 0;
+    margin-left: 2%;
+}
+
+
+/*Match input style with */
+
+#education input[type="text"]{
+    margin-left: 2%;
+}
+
+
+.inputDegree{
+    font-family: arial;
+    font-weight: bold;
+    font-size: 18.72px;
+    padding: 0;
+    border: 1px black solid;
+}
+
+.inputUniversity,
+.inputLocation,
+.inputEndDate{
+    font-family: arial;
+    font-weight: bold;
+    font-size: 13.28px;
+    padding: 0;
+    border: 1px black solid;
+}
