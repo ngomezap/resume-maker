@@ -31,10 +31,11 @@
 }
 
 
-/*Match input style with */
+/*Match input style with the preview mode*/
 
 #education input[type="text"]{
     margin-left: 2%;
+    margin-right: 3%;
 }
 
 

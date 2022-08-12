@@ -3,3 +3,82 @@
 #experience{
     border: 1px black solid;
 }
+
+#experience > div{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5%;
+    justify-items: center;
+}
+
+#experience button{
+    margin-left: auto;
+    border: none;
+    width: 6em;
+}
+
+#experience h1{
+    margin: 2%;
+}
+
+.expPos{
+    margin: 0;
+    margin-left: 2%;
+}
+
+.expCom, .expDate{
+    margin: 0;
+    margin-left: 2%;
+}
+
+.expDesc{
+    margin: 0;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+/*Match input style with the preview mode*/
+
+
+#experience input, textarea{
+    margin-left: 2%;
+    margin-right: 3%;
+}
+
+.inputExpPos{
+    font-family: arial;
+    font-weight: bold;
+    font-size: 18.72px;
+    padding: 0;
+    border: 1px black solid;
+}
+
+.inputExpCom{
+    font-family: arial;
+    font-weight: bold;
+    font-size: 13.28px;
+    padding: 0;
+    border: 1px black solid;
+}
+
+
+.inputExpIniDate, .inputExpEndDate{
+    font-family: arial;
+    font-weight: bold;
+    font-size: 13.28px;
+    padding: 0;
+    border: 1px black solid;
+}
+
+.inputExpDesc{
+    margin-top: 2%;
+    font-family: arial;
+    font-size: 16px;
+    padding: 0;
+    border: 1px black solid;
+    height: 6em;
+}
+
+textarea{
+
+}

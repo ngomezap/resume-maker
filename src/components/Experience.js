@@ -1,5 +1,7 @@
 import React from "react";
-import '../styles/Experience.css'
+import '../styles/Experience.css';
+
+
 
 export class Experience extends React.Component{
 
@@ -25,11 +27,11 @@ export class Experience extends React.Component{
 
     onSubmitButton(e){
         e.preventDefault();
-        const position = e.target.parentNode.querySelector('#inputPosition').value;
-        const company = e.target.parentNode.querySelector('#inputCompany').value;
-        const initialDate = e.target.parentNode.querySelector('#inputIniDate').value;
-        const endDate = e.target.parentNode.querySelector('#inputEndDate').value;
-        const description = e.target.parentNode.querySelector('#inputDescription').value;
+        const position = e.target.parentNode.querySelector('.inputExpPos').value;
+        const company = e.target.parentNode.querySelector('.inputExpCom').value;
+        const initialDate = e.target.parentNode.querySelector('.expDateIpt').querySelector(".inputExpIniDate").value;
+        const endDate = e.target.parentNode.querySelector('.expDateIpt').querySelector(".inputExpEndDate").value;
+        const description = e.target.parentNode.querySelector('.inputExpDesc').value;
 
         this.setState({
             position: position,
@@ -50,26 +52,26 @@ export class Experience extends React.Component{
         if(this.state.editMode === 'off'){
             toRender.push(
                 <div>
-                    <h1>Experience</h1>
-                    <h3>{position}</h3>
-                    <h5>{company}</h5>
-                    <h5>{initialDate} - {endDate}</h5>
-                    <p>{description}</p>
                     <button id='editExpBtn' onClick={this.onEditButton}>Edit</button>
+                    <h1>Experience</h1>
+                    <h3 className="expPos">{position}</h3>
+                    <h5 className="expCom">{company}</h5>
+                    <h5 className="expDate">{initialDate} - {endDate}</h5>
+                    <p className="expDesc">{description}</p>
                 </div>
             )
         }else{
             toRender.push(
                 <div>
-                    <form>
-                        <input id='inputPosition' type='text' defaultValue={position}/>
-                        <input id='inputCompany' type='text' defaultValue={company}/>
-                        <input id='inputIniDate' type='text' defaultValue={initialDate}/>
-                        <input id='inputEndDate' type='text' defaultValue={endDate}/>
-                        <input id='inputDescription' type='text' defaultValue={description}/>
-                        
-                        <button id='submitExpBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
-                    </form>
+                    <button id='submitExpBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
+                    <h1>Experience</h1>
+                    <input className='inputExpPos' type='text' defaultValue={position}/>
+                    <input className='inputExpCom' type='text' defaultValue={company}/>
+                    <div class="expDateIpt">
+                        <input className='inputExpIniDate' type='month' defaultValue={initialDate}/>
+                        <input className='inputExpEndDate' type='month' defaultValue={endDate}/>
+                    </div>
+                    <textarea className='inputExpDesc' defaultValue={description}/>                        
                 </div>
             )
         }

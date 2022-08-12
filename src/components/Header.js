@@ -25,7 +25,7 @@ export class Header extends React.Component{
     onSubmitButton(e){
         e.preventDefault();
         const name = e.target.parentNode.querySelector('#inputName').value;
-        const position = e.target.parentNode.querySelector('#inputPosition').value;
+        const position = e.target.parentNode.querySelector('#inputPosHead').value;
 
         this.setState({
             name: name,
@@ -53,7 +53,7 @@ export class Header extends React.Component{
                     <button id='submitHeadBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
                     <img id='profilePic' src={imgSrc} alt='profile_pic'/>
                     <input id='inputName' type='text' defaultValue={name} autoFocus/>
-                    <input id='inputPosition' type='text' defaultValue={position}/>
+                    <input id='inputPosHead' type='text' defaultValue={position}/>
                     
                 </div>
             )
