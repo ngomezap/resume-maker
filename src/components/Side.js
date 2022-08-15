@@ -43,20 +43,24 @@ export class Side extends React.Component{
             toRender.push(
                 <div>
                     <button id='editSideBtn' onClick={this.onEditButton}>Edit</button>
-                    <h6>Email: {mail}</h6>
-                    <h6>Tel: {phone}</h6>
-                    <h6>LinkedIn: {linkedin}</h6>
+                    <p>Email: </p>
+                    <h5>{mail}</h5>
+                    <p>Tel: </p>
+                    <h5>{phone}</h5>
+                    <p>LinkedIn:</p>
+                    <h5>{linkedin}</h5>
                 </div>
             )
         }else{
             toRender.push(
                 <div>
-                    <form>
-                        <button id='submitSideBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
-                        <input id='inputMail' type='text' defaultValue={mail}/>
-                        <input id='inputPhone' type='text' defaultValue={phone}/>
-                        <input id='inputLinkedin' type='text' defaultValue={linkedin}/>                        
-                    </form>
+                    <button id='submitSideBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
+                    <p>Email: </p>
+                    <input id='inputMail' type='text' defaultValue={mail}/>
+                    <p>Tel: </p>
+                    <input id='inputPhone' type='text' defaultValue={phone}/>
+                    <p>LinkedIn:</p>
+                    <input id='inputLinkedin' type='text' defaultValue={linkedin}/>                        
                 </div>
             )
         }

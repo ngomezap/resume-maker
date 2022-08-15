@@ -14,3 +14,19 @@
     margin-left: auto;
     border: none;
 }
+
+#sideInfo h5{
+    margin: 0;
+}
+
+#sideInfo{
+    padding-left: 3%;
+}
+
+#sideInfo div p:nth-child(2){
+    margin-top: 0;
+}
+
+#sideInfo input{
+    width: 80%;
+}
