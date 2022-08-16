@@ -15,31 +15,19 @@ export class Side extends React.Component{
         this.onSubmitButton = this.onSubmitButton.bind(this);
     }
 
-    onEditButton(){
-        this.setState({
-            editMode: 'on'
-        });
+    onEditButton(e){
+        this.props.onEditButton(e);
     }
 
     onSubmitButton(e){
-        e.preventDefault();
-        const mail = e.target.parentNode.querySelector('#inputMail').value;
-        const phone = e.target.parentNode.querySelector('#inputPhone').value;
-        const linkedin = e.target.parentNode.querySelector('#inputLinkedin').value;
-
-        this.setState({
-            mail: mail,
-            phone: phone,
-            linkedin: linkedin,
-            editMode: 'off'
-        });
+        this.props.onSubmitButton(e);
     }
 
     render(){
-        const {mail, phone, linkedin} = this.state;
+        const {mail, phone, linkedin, editMode} = this.props.info;
 
         const toRender = [];
-        if(this.state.editMode === 'off'){
+        if(editMode === 'off'){
             toRender.push(
                 <div>
                     <button id='editSideBtn' onClick={this.onEditButton}>Edit</button>
@@ -56,11 +44,11 @@ export class Side extends React.Component{
                 <div>
                     <button id='submitSideBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
                     <p>Email: </p>
-                    <input id='inputMail' type='text' defaultValue={mail}/>
+                    <input id='mail' type='text' defaultValue={mail}/>
                     <p>Tel: </p>
-                    <input id='inputPhone' type='text' defaultValue={phone}/>
+                    <input id='phone' type='text' defaultValue={phone}/>
                     <p>LinkedIn:</p>
-                    <input id='inputLinkedin' type='text' defaultValue={linkedin}/>                        
+                    <input id='linkedin' type='text' defaultValue={linkedin}/>                        
                 </div>
             )
         }

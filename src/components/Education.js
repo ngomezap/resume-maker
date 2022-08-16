@@ -5,44 +5,23 @@ export class Education extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {
-            degree: 'Industrial Engineering',
-            university: 'University of Cantabria',
-            location: 'Santander',
-            endDate: 'July 2018',
-            editMode: 'off'
-        }
         this.onEditButton = this.onEditButton.bind(this);
         this.onSubmitButton = this.onSubmitButton.bind(this);
     }
 
-    onEditButton(){
-        this.setState({
-            editMode: 'on'
-        });
+    onEditButton(e){
+        this.props.onEditButton(e);
     }
 
     onSubmitButton(e){
-        e.preventDefault();
-        const degree = e.target.parentNode.querySelector('.inputDegree').value;
-        const university = e.target.parentNode.querySelector('.inputUniversity').value;
-        const location = e.target.parentNode.querySelector('.inputLocation').value;
-        const endDate = e.target.parentNode.querySelector('.inputEndDate').value;
-
-        this.setState({
-            degree: degree,
-            university: university,
-            location: location,
-            endDate: endDate,
-            editMode: 'off'
-        });
+        this.props.onSubmitButton(e);
     }
 
 
     render(){
-        const {degree, university, location, endDate} = this.state;
+        const {degree, university, location, endDate, editMode} = this.props.info;
         const toRender = [];
-        if(this.state.editMode === 'off'){
+        if(editMode === 'off'){
             toRender.push(
                 <div>
                     <button id='editEduBtn' onClick={this.onEditButton}>Edit</button>
@@ -58,10 +37,10 @@ export class Education extends React.Component{
                 <div>
                     <button id='submitEduBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
                     <h1>Education</h1>
-                    <input className="inputDegree" type='text' defaultValue={degree}/>
-                    <input className='inputUniversity' type='text' defaultValue={university}/>
-                    <input className='inputLocation' type='text' defaultValue={location}/>
-                    <input className='inputEndDate' type='text' defaultValue={endDate}/>
+                    <input id="degree" className="inputDegree" type='text' defaultValue={degree}/>
+                    <input id="university" className='inputUniversity' type='text' defaultValue={university}/>
+                    <input id="location" className='inputLocation' type='text' defaultValue={location}/>
+                    <input id="endDate" className='inputEndDate' type='text' defaultValue={endDate}/>
                 </div>
             )
         }

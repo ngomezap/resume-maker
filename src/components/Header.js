@@ -16,35 +16,25 @@ export class Header extends React.Component{
         this.onSubmitButton = this.onSubmitButton.bind(this);
     };
 
-    onEditButton(){
-        this.setState({
-            editMode: 'on'
-        });
+    onEditButton(e){
+        this.props.onEditButton(e);
     }
 
     onSubmitButton(e){
-        e.preventDefault();
-        const name = e.target.parentNode.querySelector('#inputName').value;
-        const position = e.target.parentNode.querySelector('#inputPosHead').value;
-
-        this.setState({
-            name: name,
-            position: position,
-            editMode: 'off',
-        });
+        this.props.onSubmitButton(e);
     }
 
     render(){
-        const {imgSrc, name, position} = this.state;
+        const {imgSrc, name, currentPosition, editMode} = this.props.info;
         
         const toRender = [];
-        if(this.state.editMode === 'off'){
+        if(editMode === 'off'){
             toRender.push(
                 <div>
                     <button id='editHeadBtn' onClick={this.onEditButton}>Edit</button>
                     <img id='profilePic' src={imgSrc} alt='profile_pic'/>
                     <h1 id="nameHeader">{name}</h1>
-                    <h4 id="positionHeader">{position}</h4>
+                    <h4 id="positionHeader">{currentPosition}</h4>
                 </div>
             )
         }else{
@@ -52,8 +42,8 @@ export class Header extends React.Component{
                 <div>
                     <button id='submitHeadBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
                     <img id='profilePic' src={imgSrc} alt='profile_pic'/>
-                    <input id='inputName' type='text' defaultValue={name} autoFocus/>
-                    <input id='inputPosHead' type='text' defaultValue={position}/>
+                    <input id='name' type='text' defaultValue={name} autoFocus/>
+                    <input id='currentPosition' type='text' defaultValue={currentPosition}/>
                     
                 </div>
             )
