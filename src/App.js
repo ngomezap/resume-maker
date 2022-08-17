@@ -1,12 +1,12 @@
 import React from "react";
 import { Header } from "./components/Header";
 import { ExperienceList } from "./components/ExperienceList";
-import { Education } from "./components/Education";
 import { Side } from "./components/Side";
 import './styles/App.css';
 import avatar from './images/avatar.png';
 import { MyDocument } from "./components/Document";
 import { v4 as uuidv4 } from 'uuid';
+import { EducationList } from "./components/EducationList";
 
 
 class App extends React.Component {
@@ -40,17 +40,24 @@ class App extends React.Component {
       },
           
       headInfo: {
-        imgSrc: avatar,
-        name: 'Ignacio Gómez Aparicio',
-        currentPosition: 'Software Developer',
-        editMode: 'off'
+        defaultHead:{
+          id: 'defaultHead',
+          imgSrc: avatar,
+          name: 'Ignacio Gómez Aparicio',
+          currentPosition: 'Software Developer',
+          editMode: 'off'
+        }
       },
       education: {
-        degree: 'Industrial Engineering',
-        university: 'University of Cantabria',
-        location: 'Santander',
-        endDate: 'July 2018',
-        editMode: 'off'
+        defaultEdu:{
+          degree: 'Industrial Engineering',
+          university: 'University of Cantabria',
+          location: 'Santander',
+          endDate: 'July 2018',
+          editMode: 'off',
+          id: 'defaultEdu'
+        }
+        
       }
     }
   }
@@ -59,11 +66,17 @@ class App extends React.Component {
   onSubmitButton(e){
     const grandParent = e.target.parentNode.parentNode;
     const parent = e.target.parentNode;
+
+    //Get the parent id and the section name (using the grandpa id)
     const key = parent.id;
     const section = grandParent.id;
+    
+    //select every input and textarea value to put it back on preview mode
     const values = parent.querySelectorAll("input, textarea");
     const img = grandParent.querySelector('img');
 
+    //now and object is conform to keep the other experiences and
+    //add the new changes
     let obj = {};
     Object.assign(obj, this.state[section]);
 
@@ -72,7 +85,8 @@ class App extends React.Component {
       obj[key][`${k}`] = e.value;
     });
     
-    console.log(img)
+
+    //in case the modification is on the header
     if(img !== null){
       obj['imgSrc'] = avatar;
     };
@@ -104,6 +118,15 @@ class App extends React.Component {
 
   onAddBtn(e){
     let section = e.target.parentNode.id;
+
+    //Add button is only in education and experience sections
+    //it is necessary to differentiate the default obj
+    let def;
+    if(section === 'experience'){
+      def = 'defaultExp';
+    }else{
+      def = 'defaultEdu';
+    }
     
     //Lets create an object representing the whole section
     const copy = {};
@@ -111,9 +134,10 @@ class App extends React.Component {
     
     const key = uuidv4();
     copy[key] = {};
-    console.log(section)
-    Object.assign(copy[key],this.state[section].default);
+    
+    Object.assign(copy[key],this.state[section][def]);
     copy[key].id = key;
+    copy[key].editMode = 'on';
     this.setState({
       [section]: copy
     })
@@ -125,10 +149,11 @@ class App extends React.Component {
       <div id="container">
         <Header info={headInfo} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
         <Side info={sideInfo} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
-        <Education 
+        <EducationList 
           info={education} 
           onEditButton = {this.onEditBtn} 
-          onSubmitButton = {this.onSubmitButton}/>
+          onSubmitButton = {this.onSubmitButton}
+          onAddButton = {this.onAddBtn}/>
         <ExperienceList 
           info={experience} 
           onEditButton = {this.onEditBtn} 

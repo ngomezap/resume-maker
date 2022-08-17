@@ -39,7 +39,7 @@
 }
 
 
-.inputDegree{
+#education .degree{
     font-family: arial;
     font-weight: bold;
     font-size: 18.72px;
@@ -47,9 +47,9 @@
     border: 1px black solid;
 }
 
-.inputUniversity,
-.inputLocation,
-.inputEndDate{
+#education .university,
+#education .location,
+#education .endDate{
     font-family: arial;
     font-weight: bold;
     font-size: 13.28px;

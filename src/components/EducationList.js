@@ -1,8 +1,8 @@
 import React from "react";
-import { Experience } from "./Experience";
+import { Education } from "./Education";
 
 
-export class ExperienceList extends React.Component{
+export class EducationList extends React.Component{
 
     constructor(props){
         super(props);
@@ -24,26 +24,26 @@ export class ExperienceList extends React.Component{
     }
 
     render(){
-        const experience = this.props.info;
-        const keys = Object.keys(experience);
+        const education = this.props.info;
+        const keys = Object.keys(education);
         let toRender = [];
         toRender.push(
-            <h1>Experience</h1>
+            <h1>Education</h1>
         )
         keys.forEach(k => {
             toRender.push(
-                <Experience 
-                    info={experience[k]} 
+                <Education 
+                    info={education[k]} 
                     onEditButton = {this.onEditButton} 
                     onSubmitButton = {this.onSubmitButton}>
-                </Experience>
+                </Education>
             );
         });
         toRender.push(
             <button onClick={this.onAddButton}>Add</button>
         )
         return(
-            <section id="experience">{toRender}</section>
+            <section id="education">{toRender}</section>
         )
     }
 

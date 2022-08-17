@@ -25,12 +25,12 @@ export class Header extends React.Component{
     }
 
     render(){
-        const {imgSrc, name, currentPosition, editMode} = this.props.info;
+        const {imgSrc, name, currentPosition, editMode, id} = this.props.info.defaultHead;
         
         const toRender = [];
         if(editMode === 'off'){
             toRender.push(
-                <div>
+                <div id={id}>
                     <button id='editHeadBtn' onClick={this.onEditButton}>Edit</button>
                     <img id='profilePic' src={imgSrc} alt='profile_pic'/>
                     <h1 id="nameHeader">{name}</h1>
@@ -39,7 +39,7 @@ export class Header extends React.Component{
             )
         }else{
             toRender.push(
-                <div>
+                <div id={id}>
                     <button id='submitHeadBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
                     <img id='profilePic' src={imgSrc} alt='profile_pic'/>
                     <input id='name' type='text' defaultValue={name} autoFocus/>
