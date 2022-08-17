@@ -21,7 +21,6 @@ export class Experience extends React.Component{
 
 
     render(){
-
         const {position, company, startDateJob, endDateJob, description, editMode} = this.props.info;
 
         const toRender = [];
@@ -29,7 +28,6 @@ export class Experience extends React.Component{
             toRender.push(
                 <div>
                     <button id='editExpBtn' onClick={this.onEditButton}>Edit</button>
-                    <h1>Experience</h1>
                     <h3 className="expPos">{position}</h3>
                     <h5 className="expCom">{company}</h5>
                     <h5 className="expDate">{startDateJob} - {endDateJob}</h5>
@@ -40,7 +38,6 @@ export class Experience extends React.Component{
             toRender.push(
                 <div>
                     <button id='submitExpBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
-                    <h1>Experience</h1>
                     <input id="position" className='inputExpPos' type='text' defaultValue={position}/>
                     <input id="company" className='inputExpCom' type='text' defaultValue={company}/>
                     <div className="expDateIpt">
@@ -53,7 +50,7 @@ export class Experience extends React.Component{
         }
         
         return(
-            <section id='experience'>{toRender}</section>
+            toRender
         );
     }
 }

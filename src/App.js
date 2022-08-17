@@ -1,10 +1,12 @@
 import React from "react";
 import { Header } from "./components/Header";
-import { Experience } from "./components/Experience";
+import { ExperienceList } from "./components/ExperienceList";
 import { Education } from "./components/Education";
 import { Side } from "./components/Side";
 import './styles/App.css';
 import avatar from './images/avatar.png';
+import { MyDocument } from "./components/Document";
+import { v4 as uuidv4 } from 'uuid';
 
 
 class App extends React.Component {
@@ -13,14 +15,18 @@ class App extends React.Component {
     super(props);
     this.onEditBtn = this.onEditBtn.bind(this);
     this.onSubmitButton = this.onSubmitButton.bind(this);
+    this.onAddBtn = this.onAddBtn.bind(this);
     this.state = {
       experience: {
-        position: 'Solar technician',
-        company: 'Ingeteam UK ltd.',
-        startDateJob: 'January 2020',
-        endDateJob: 'August 2020',
-        description: 'Only engineer in charge of tow solar farms of 5MW and 10MW',
-        editMode: 'off'
+        default:{
+          position: 'Job Position',
+          company: 'Company',
+          startDateJob: 'Starting Date (MM/YYYY)',
+          endDateJob: 'End Date (MM/YYYY)',
+          description: 'Position description and main responsabilities',
+          editMode: 'off'
+        }
+          
       },
       sideInfo: {
         mail: 'igomez.ap@gmail.com',
@@ -72,13 +78,28 @@ class App extends React.Component {
   onEditBtn(e){
     let section = e.target.parentNode.parentNode.id;
     let obj = this.state[section]
-    obj["editMode"] = 'on';
+    obj["editMode"] = 'off';
 
     this.setState({
       [section]: obj
     })
   }
 
+  onAddBtn(e){
+    let section = e.target.parentNode.id;
+    
+    //Lets create an object representing the whole section
+    const copy = {};
+    Object.assign(copy, this.state[section]);
+    console.log(copy)
+    
+    const key = uuidv4();
+    copy[key] = {};
+    Object.assign(copy[key],this.state[section].default);
+    this.setState({
+      [section]: copy
+    })
+  }
 
   render(){
     const {headInfo, sideInfo, education, experience} = this.state;
@@ -87,7 +108,12 @@ class App extends React.Component {
         <Header info={headInfo} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
         <Side info={sideInfo} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
         <Education info={education} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
-        <Experience info={experience} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
+        <ExperienceList 
+        info={experience} 
+        onEditButton = {this.onEditBtn} 
+        onSubmitButton = {this.onSubmitButton}
+        onAddButton = {this.onAddBtn}/>
+        <MyDocument info={this.state}></MyDocument>
       </div>
     );
   }
