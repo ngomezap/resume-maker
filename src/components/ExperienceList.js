@@ -32,7 +32,11 @@ export class ExperienceList extends React.Component{
         )
         keys.forEach(k => {
             toRender.push(
-                <Experience info={experience[k]} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}></Experience>
+                <Experience 
+                    info={experience[k]} 
+                    onEditButton = {this.onEditButton} 
+                    onSubmitButton = {this.onSubmitButton}>
+                </Experience>
             );
         });
         toRender.push(

@@ -5,12 +5,6 @@ export class Side extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {
-            mail: 'igomez.ap@gmail.com',
-            phone: '0034 671197504',
-            linkedin: 'linkedin.com/in/ignacio-gomez-aparicio/',
-            editMode: 'off'
-        }
         this.onEditButton = this.onEditButton.bind(this);
         this.onSubmitButton = this.onSubmitButton.bind(this);
     }
@@ -24,12 +18,12 @@ export class Side extends React.Component{
     }
 
     render(){
-        const {mail, phone, linkedin, editMode} = this.props.info;
+        const {mail, phone, linkedin, editMode, id} = this.props.info.defaultSide;
 
         const toRender = [];
         if(editMode === 'off'){
             toRender.push(
-                <div>
+                <div id={id}>
                     <button id='editSideBtn' onClick={this.onEditButton}>Edit</button>
                     <p>Email: </p>
                     <h5>{mail}</h5>
@@ -41,14 +35,14 @@ export class Side extends React.Component{
             )
         }else{
             toRender.push(
-                <div>
-                    <button id='submitSideBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
+                <div id={id}>
+                    <button className='submitSideBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
                     <p>Email: </p>
-                    <input id='mail' type='text' defaultValue={mail}/>
+                    <input className='mail' type='text' defaultValue={mail}/>
                     <p>Tel: </p>
-                    <input id='phone' type='text' defaultValue={phone}/>
+                    <input className='phone' type='text' defaultValue={phone}/>
                     <p>LinkedIn:</p>
-                    <input id='linkedin' type='text' defaultValue={linkedin}/>                        
+                    <input className='linkedin' type='text' defaultValue={linkedin}/>                        
                 </div>
             )
         }

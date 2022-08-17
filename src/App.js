@@ -18,7 +18,8 @@ class App extends React.Component {
     this.onAddBtn = this.onAddBtn.bind(this);
     this.state = {
       experience: {
-        default:{
+        defaultExp:{
+          id: 'defaultExp',
           position: 'Job Position',
           company: 'Company',
           startDateJob: 'Starting Date (MM/YYYY)',
@@ -29,11 +30,15 @@ class App extends React.Component {
           
       },
       sideInfo: {
-        mail: 'igomez.ap@gmail.com',
-        phone: '0034 671197504',
-        linkedin: 'linkedin.com/in/ignacio-gomez-aparicio/',
-        editMode: 'off'
+        defaultSide:{
+          id: 'defaultSide',
+          mail: 'igomez.ap@gmail.com',
+          phone: '0034 671197504',
+          linkedin: 'linkedin.com/in/ignacio-gomez-aparicio/',
+          editMode: 'off'
+        }
       },
+          
       headInfo: {
         imgSrc: avatar,
         name: 'Ignacio Gómez Aparicio',
@@ -53,36 +58,48 @@ class App extends React.Component {
 
   onSubmitButton(e){
     const grandParent = e.target.parentNode.parentNode;
+    const parent = e.target.parentNode;
+    const key = parent.id;
     const section = grandParent.id;
-    const values = grandParent.querySelectorAll("input, textarea");
+    const values = parent.querySelectorAll("input, textarea");
     const img = grandParent.querySelector('img');
 
     let obj = {};
+    Object.assign(obj, this.state[section]);
 
     values.forEach(e => {
-      let key = e.id;
-      obj[`${key}`] = e.value;
+      let k = e.className;
+      obj[key][`${k}`] = e.value;
     });
-
-    if(img !== undefined){
+    
+    console.log(img)
+    if(img !== null){
       obj['imgSrc'] = avatar;
     };
 
-    obj["editMode"] = 'off';
+    obj[key]["editMode"] = 'off';
 
     this.setState({
       [section]: obj,
     })
+
+    e.stopPropagation();
   }
 
   onEditBtn(e){
     let section = e.target.parentNode.parentNode.id;
-    let obj = this.state[section]
-    obj["editMode"] = 'off';
+    let key = e.target.parentNode.id;
+    let obj = {};
+
+    Object.assign(obj, this.state[section]);
+
+    obj[key]["editMode"] = 'on';
 
     this.setState({
       [section]: obj
     })
+    e.stopPropagation();
+
   }
 
   onAddBtn(e){
@@ -91,11 +108,12 @@ class App extends React.Component {
     //Lets create an object representing the whole section
     const copy = {};
     Object.assign(copy, this.state[section]);
-    console.log(copy)
     
     const key = uuidv4();
     copy[key] = {};
+    console.log(section)
     Object.assign(copy[key],this.state[section].default);
+    copy[key].id = key;
     this.setState({
       [section]: copy
     })
@@ -107,12 +125,15 @@ class App extends React.Component {
       <div id="container">
         <Header info={headInfo} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
         <Side info={sideInfo} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
-        <Education info={education} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
+        <Education 
+          info={education} 
+          onEditButton = {this.onEditBtn} 
+          onSubmitButton = {this.onSubmitButton}/>
         <ExperienceList 
-        info={experience} 
-        onEditButton = {this.onEditBtn} 
-        onSubmitButton = {this.onSubmitButton}
-        onAddButton = {this.onAddBtn}/>
+          info={experience} 
+          onEditButton = {this.onEditBtn} 
+          onSubmitButton = {this.onSubmitButton}
+          onAddButton = {this.onAddBtn}/>
         <MyDocument info={this.state}></MyDocument>
       </div>
     );
