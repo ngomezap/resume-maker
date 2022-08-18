@@ -1,12 +1,13 @@
 import React from "react";
 import { Header } from "./components/Header";
 import { ExperienceList } from "./components/ExperienceList";
+import { EducationList } from "./components/EducationList";
 import { Side } from "./components/Side";
 import './styles/App.css';
 import avatar from './images/avatar.png';
 import { MyDocument } from "./components/Document";
 import { v4 as uuidv4 } from 'uuid';
-import { EducationList } from "./components/EducationList";
+import {defaultEdu, defaultExp, defaultHead, defaultSide} from './components/DefaultInfo'
 
 
 class App extends React.Component {
@@ -18,46 +19,17 @@ class App extends React.Component {
     this.onAddBtn = this.onAddBtn.bind(this);
     this.state = {
       experience: {
-        defaultExp:{
-          id: 'defaultExp',
-          position: 'Job Position',
-          company: 'Company',
-          startDateJob: 'Starting Date (MM/YYYY)',
-          endDateJob: 'End Date (MM/YYYY)',
-          description: 'Position description and main responsabilities',
-          editMode: 'off'
-        }
-          
+        defaultExp: defaultExp
       },
       sideInfo: {
-        defaultSide:{
-          id: 'defaultSide',
-          mail: 'igomez.ap@gmail.com',
-          phone: '0034 671197504',
-          linkedin: 'linkedin.com/in/ignacio-gomez-aparicio/',
-          editMode: 'off'
-        }
+        defaultSide: defaultSide
       },
           
       headInfo: {
-        defaultHead:{
-          id: 'defaultHead',
-          imgSrc: avatar,
-          name: 'Ignacio Gómez Aparicio',
-          currentPosition: 'Software Developer',
-          editMode: 'off'
-        }
+        defaultHead: defaultHead
       },
       education: {
-        defaultEdu:{
-          degree: 'Industrial Engineering',
-          university: 'University of Cantabria',
-          location: 'Santander',
-          endDate: 'July 2018',
-          editMode: 'off',
-          id: 'defaultEdu'
-        }
-        
+        defaultEdu: defaultEdu
       }
     }
   }
@@ -146,9 +118,16 @@ class App extends React.Component {
   render(){
     const {headInfo, sideInfo, education, experience} = this.state;
     return (
-      <div id="container">
-        <Header info={headInfo} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
-        <Side info={sideInfo} onEditButton = {this.onEditBtn} onSubmitButton = {this.onSubmitButton}/>
+      <div>
+        <div id="container">
+        <Header 
+          info={headInfo} 
+          onEditButton = {this.onEditBtn} 
+          onSubmitButton = {this.onSubmitButton}/>
+        <Side 
+          info={sideInfo} 
+          onEditButton = {this.onEditBtn} 
+          onSubmitButton = {this.onSubmitButton}/>
         <EducationList 
           info={education} 
           onEditButton = {this.onEditBtn} 
@@ -159,6 +138,7 @@ class App extends React.Component {
           onEditButton = {this.onEditBtn} 
           onSubmitButton = {this.onSubmitButton}
           onAddButton = {this.onAddBtn}/>
+        </div>
         <MyDocument info={this.state}></MyDocument>
       </div>
     );

@@ -6,12 +6,6 @@ export class Header extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {
-            imgSrc: avatar,
-            name: 'Ignacio Gómez Aparicio',
-            position: 'Software Developer',
-            editMode: 'off'
-        }
         this.onEditButton = this.onEditButton.bind(this);
         this.onSubmitButton = this.onSubmitButton.bind(this);
     };
@@ -25,26 +19,27 @@ export class Header extends React.Component{
     }
 
     render(){
-        const {imgSrc, name, currentPosition, editMode, id} = this.props.info.defaultHead;
+        const {imgSrc, name, currentPosition, editMode, id, descHeader} = this.props.info.defaultHead;
         
         const toRender = [];
         if(editMode === 'off'){
             toRender.push(
                 <div id={id}>
                     <button id='editHeadBtn' onClick={this.onEditButton}>Edit</button>
-                    <img id='profilePic' src={imgSrc} alt='profile_pic'/>
+                    <img className='profilePic' src={imgSrc} alt='profile_pic'/>
                     <h1 id="nameHeader">{name}</h1>
                     <h4 id="positionHeader">{currentPosition}</h4>
+                    <p id="descHeader">{descHeader}</p>
                 </div>
             )
         }else{
             toRender.push(
                 <div id={id}>
                     <button id='submitHeadBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
-                    <img id='profilePic' src={imgSrc} alt='profile_pic'/>
-                    <input id='name' type='text' defaultValue={name} autoFocus/>
-                    <input id='currentPosition' type='text' defaultValue={currentPosition}/>
-                    
+                    <img className='profilePic' src={imgSrc} alt='profile_pic'/>
+                    <input className='name' type='text' defaultValue={name} autoFocus/>
+                    <input className='currentPosition' type='text' defaultValue={currentPosition}/>
+                    <textarea defaultValue={descHeader}></textarea>
                 </div>
             )
         }

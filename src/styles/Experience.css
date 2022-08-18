@@ -9,6 +9,7 @@
     flex-direction: column;
     padding-bottom: 5%;
     justify-items: center;
+    background-color: rgb(243, 233, 233);
 }
 
 #experience button{

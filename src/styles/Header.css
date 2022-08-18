@@ -20,25 +20,30 @@
     width: 6em;
 }
 
-#profilePic{
+.profilePic{
     width: 100%;
     grid-column: 1;
-    grid-row: 2 / span 2;
+    grid-row: 2 / span 4;
     margin-left: 10%;
 }
 
-#nameHeader, #name{
+#nameHeader, .name{
     grid-column: 2 / span 11;
     grid-row: 2;
     align-self: center;
 }
 
-#positionHeader, #currentPosition{
+#positionHeader, .currentPosition{
     grid-column: 2 / span 11;
     grid-row: 3;
     align-self: center;
 }
 
+#descHeader{
+    grid-column: 2 / span 11;
+    grid-row: 4 / span 2;
+    align-self: center;
+}
 /*Match font style, padding, margin, etc for both editing and preview mode*/
 
 #nameHeader {
@@ -52,7 +57,15 @@
     padding: 10px;
 }
 
-#name{
+#descHeader{
+    margin: 0;
+    padding: 10px;
+    padding-top: 0;
+    text-align: justify;
+    margin-right: 10%;
+}
+
+.name{
     border: 1px black solid;
     font-size: 32px;
     font-family: inherit;
@@ -62,7 +75,7 @@
     overflow-x: hidden;
 }
 
-#currentPosition{
+.currentPosition{
     padding: 0;
     border: 1px black solid;
     font-size: 16px;
