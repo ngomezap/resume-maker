@@ -1,6 +1,5 @@
 import React from "react";
 import '../styles/Header.css';
-import avatar from '../images/avatar.png';
 
 export class Header extends React.Component{
 

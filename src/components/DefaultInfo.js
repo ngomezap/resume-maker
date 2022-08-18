@@ -15,7 +15,7 @@ const defaultSide = {
     id: 'defaultSide',
     mail: 'email@gmail.com',
     phone: '0034 000000000',
-    linkedin: 'linkedin.com/in/name-surname/',
+    linkedin: '/name-surname',
     editMode: 'off'
 }
 

@@ -1,5 +1,8 @@
 import React from "react";
-import '../styles/Side.css'
+import '../styles/Side.css';
+import { FcPhone } from "react-icons/fc";
+import { AiFillLinkedin } from "react-icons/ai";
+import { AiFillMail } from "react-icons/ai";
 
 export class Side extends React.Component{
 
@@ -25,11 +28,11 @@ export class Side extends React.Component{
             toRender.push(
                 <div id={id}>
                     <button id='editSideBtn' onClick={this.onEditButton}>Edit</button>
-                    <p>Email: </p>
+                    <AiFillMail></AiFillMail>
                     <h5>{mail}</h5>
-                    <p>Tel: </p>
+                    <FcPhone></FcPhone>
                     <h5>{phone}</h5>
-                    <p>LinkedIn:</p>
+                    <AiFillLinkedin></AiFillLinkedin>
                     <h5>{linkedin}</h5>
                 </div>
             )
@@ -37,11 +40,11 @@ export class Side extends React.Component{
             toRender.push(
                 <div id={id}>
                     <button className='submitSideBtn' type='submit' onClick={this.onSubmitButton}>Submit</button>
-                    <p>Email: </p>
+                    <AiFillMail></AiFillMail>
                     <input className='mail' type='text' defaultValue={mail}/>
-                    <p>Tel: </p>
+                    <FcPhone></FcPhone>
                     <input className='phone' type='text' defaultValue={phone}/>
-                    <p>LinkedIn:</p>
+                    <AiFillLinkedin></AiFillLinkedin>
                     <input className='linkedin' type='text' defaultValue={linkedin}/>                        
                 </div>
             )

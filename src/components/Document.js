@@ -1,7 +1,10 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet, PDFViewer, Image } from '@react-pdf/renderer';
-import source from '../fonts/Nunito-Light.ttf'
-import { Font } from '@react-pdf/renderer'
+import { Page, Text, View, Document, StyleSheet, PDFViewer, Image, Svg, Path } from '@react-pdf/renderer';
+import source from '../fonts/Nunito-Light.ttf';
+import { Font } from '@react-pdf/renderer';
+import mailIcon from '../images/mail.png';
+import phoneIcon from '../images/phone.png';
+import linkedinIcon from '../images/linkedin.png'
 
 Font.register({ family: 'Nunito', src: source, fontStyle: 'normal', fontWeight: 'normal'});
 Font.registerHyphenationCallback(word => [word]);
@@ -29,7 +32,7 @@ const styles = StyleSheet.create({
         width: '30%',
         //backgroundColor: 'cyan',
         fontSize: '14px',
-        overflow: 'hidden'
+        textOverflow: 'ellipsis'
     },
     rightSide: {
         paddingLeft: '20px',
@@ -58,6 +61,12 @@ const styles = StyleSheet.create({
         marginBottom: '10px'
     },
 
+    //Left Side
+
+    icon: {
+        width: '10%'
+    },
+
     //Header section
     headerSection: {
         fontSize: '30px',
@@ -67,6 +76,12 @@ const styles = StyleSheet.create({
         fontSize: '13px',
         textAlign: 'justify',
         marginRight: '30%',
+        marginLeft: '5%',
+    },
+    name:{
+        marginLeft: '5%',
+    },
+    currentPosition:{
         marginLeft: '5%',
     }
 
@@ -112,14 +127,18 @@ export class MyDocument extends React.Component{
                     <Page size="A4" style={styles.page}>
                         <View style={styles.header}>
                             <Image src={headInfo.defaultHead.imgSrc} style={styles.avatar}></Image>
-                            <Text>{headInfo.defaultHead.name}</Text>
-                            <Text>{headInfo.defaultHead.currentPosition}</Text>
+                            <Text style={styles.name}>{headInfo.defaultHead.name}</Text>
+                            <Text style={styles.currentPosition}>{headInfo.defaultHead.currentPosition}</Text>
                             <Text style={styles.headerDesc}>{headInfo.defaultHead.descHeader}</Text>
                         </View>
                         <View style={styles.leftSide}>
+                            <Image style={styles.icon} src={mailIcon}></Image>
                             <Text>{sideInfo.defaultSide.mail}</Text>
+                            <Image style={styles.icon} src={phoneIcon}></Image>
                             <Text>{sideInfo.defaultSide.phone}</Text>
+                            <Image style={styles.icon} src={linkedinIcon}></Image>
                             <Text>{sideInfo.defaultSide.linkedin}</Text>
+                            
                         </View>
                         <View style={styles.rightSide}>
                             <View style={styles.education}>
