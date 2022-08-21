@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet, PDFViewer, Image, Svg, Path } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, PDFViewer, Image, Svg, Line } from '@react-pdf/renderer';
 import source from '../fonts/Nunito-Light.ttf';
 import { Font } from '@react-pdf/renderer';
 import mailIcon from '../images/mail.png';
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         height: '75%',
         width: '30%',
-        //backgroundColor: 'cyan',
+        backgroundColor: '#EFEFEF',
         fontSize: '14px',
         textOverflow: 'ellipsis'
     },
@@ -41,10 +41,12 @@ const styles = StyleSheet.create({
     },
     education: {
         marginBottom: 20,
-        fontSize: '15px'
+        fontSize: '12px'
         //backgroundColor: 'rgb(247, 167, 167)'
     },
     experience: {
+        marginBottom: 20,
+        fontSize: '12px'
         //backgroundColor: 'rgb(243, 242, 165)'
     },
     avatar: {
@@ -54,9 +56,7 @@ const styles = StyleSheet.create({
         width: window.innerWidth/1.3,
         height: window.innerHeight
     },
-    eduSection: {
-        marginBottom: '10px'
-    },
+    
     expSection: {
         marginBottom: '10px'
     },
@@ -64,7 +64,24 @@ const styles = StyleSheet.create({
     //Left Side
 
     icon: {
-        width: '10%'
+        width: '10%',
+        marginBottom: '2px',
+        marginTop: '4px'
+    },
+
+    //Experience section
+    dateExp: {
+        fontSize: '10px'
+    },
+
+
+    //Education section
+    eduSection: {
+        marginBottom: '10px',
+    },
+
+    dateEdu:{
+        fontSize: '10px'
     },
 
     //Header section
@@ -90,8 +107,6 @@ const styles = StyleSheet.create({
   // Create Document Component
 export class MyDocument extends React.Component{
 
-
-
     render(){
         const {education, experience, sideInfo, headInfo} = this.props.info;
 
@@ -102,7 +117,7 @@ export class MyDocument extends React.Component{
                 <View>
                     <Text>{experience[k].position}</Text>
                     <Text>{experience[k].company}</Text>
-                    <Text>{experience[k].startDateJob} - {experience[k].endDateJob}</Text>
+                    <Text style={styles.dateExp}>{experience[k].startDateJob} - {experience[k].endDateJob}</Text>
                     <Text style={styles.expSection}>{experience[k].description}</Text>
                 </View>
             )
@@ -112,10 +127,10 @@ export class MyDocument extends React.Component{
         const eduKeys = Object.keys(education);
         eduKeys.forEach(k => {
             renderEdu.push(
-                <View>
+                <View style={styles.eduSection}>
                     <Text>{education[k].degree}</Text>
                     <Text>{education[k].university}</Text>
-                    <Text style={styles.eduSection}>{education[k].endDate}</Text>
+                    <Text style={[styles.dateEdu]}>{education[k].endDate}</Text>
                 </View>
             )
         })
@@ -124,12 +139,15 @@ export class MyDocument extends React.Component{
         return (
             <PDFViewer style={styles.viewer}>
                 <Document>
-                    <Page size="A4" style={styles.page}>
+                    <Page wrap={false} size="A4" style={styles.page} >
                         <View style={styles.header}>
                             <Image src={headInfo.defaultHead.imgSrc} style={styles.avatar}></Image>
                             <Text style={styles.name}>{headInfo.defaultHead.name}</Text>
                             <Text style={styles.currentPosition}>{headInfo.defaultHead.currentPosition}</Text>
                             <Text style={styles.headerDesc}>{headInfo.defaultHead.descHeader}</Text>
+                            <Svg height="3" width="600" style={{marginTop: '20px'}}>
+                                <Line x1="40" y1="0" x2="350" y2="0" strokeWidth={2} stroke="rgb(0,0,0)"/>
+                            </Svg>
                         </View>
                         <View style={styles.leftSide}>
                             <Image style={styles.icon} src={mailIcon}></Image>
@@ -138,15 +156,14 @@ export class MyDocument extends React.Component{
                             <Text>{sideInfo.defaultSide.phone}</Text>
                             <Image style={styles.icon} src={linkedinIcon}></Image>
                             <Text>{sideInfo.defaultSide.linkedin}</Text>
-                            
                         </View>
                         <View style={styles.rightSide}>
                             <View style={styles.education}>
-                                <Text style={styles.headerSection}>Education</Text>
+                                <Text style={{fontSize: '22px'}}>Education</Text>
                                 {renderEdu}
                             </View>
                             <View style={styles.experience}>
-                                <Text style={styles.headerSection}>Experience</Text>
+                                <Text style={{fontSize: '22px'}}>Experience</Text>
                                 {renderExp}
                             </View>
                         </View>
