@@ -80,6 +80,6 @@
     height: 6em;
 }
 
-textarea{
-
+#experience .deleteExpBtn{
+    background-color: rgb(194, 36, 36);
 }

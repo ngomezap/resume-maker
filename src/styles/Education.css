@@ -57,3 +57,7 @@
     padding: 0;
     border: 1px black solid;
 }
+
+#education .deleteEduBtn{
+    background-color: rgb(194, 36, 36);
+}

@@ -115,11 +115,11 @@ class App extends React.Component {
 
     //Add button is only in education and experience sections
     //it is necessary to differentiate the default obj
-    let def;
+    let def = {};
     if(section === 'experience'){
-      def = 'defaultExp';
+      def = defaultExp;
     }else{
-      def = 'defaultEdu';
+      def = defaultEdu;
     }
     
     //Lets create an object representing the whole section
@@ -129,7 +129,7 @@ class App extends React.Component {
     const key = uuidv4();
     copy[key] = {};
     
-    Object.assign(copy[key],this.state[section][def]);
+    Object.assign(copy[key], def);
     copy[key].id = key;
     copy[key].editMode = 'on';
     this.setState({
@@ -154,7 +154,8 @@ class App extends React.Component {
           info={education} 
           onEditButton = {this.onEditBtn} 
           onSubmitButton = {this.onSubmitButton}
-          onAddButton = {this.onAddBtn}/>
+          onAddButton = {this.onAddBtn}
+          onDeleteButton = {this.onDeleteBtn}/>
         <ExperienceList 
           info={experience} 
           onEditButton = {this.onEditBtn} 

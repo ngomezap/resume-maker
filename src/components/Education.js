@@ -7,6 +7,7 @@ export class Education extends React.Component{
         super(props);
         this.onEditButton = this.onEditButton.bind(this);
         this.onSubmitButton = this.onSubmitButton.bind(this);
+        this.onDeleteButton = this.onDeleteButton.bind(this);
     }
 
     onEditButton(e){
@@ -17,6 +18,10 @@ export class Education extends React.Component{
         this.props.onSubmitButton(e);
     }
 
+    onDeleteButton(e){
+        this.props.onDeleteBtn(e);
+    }
+
 
     render(){
         const {degree, university, location, endDate, editMode, id} = this.props.info;
@@ -25,6 +30,7 @@ export class Education extends React.Component{
             toRender.push(
                 <div id={id}>
                     <button id='editEduBtn' onClick={this.onEditButton}>Edit</button>
+                    <button className="deleteEduBtn" onClick={this.onDeleteButton}>Delete</button>
                     <h3 className="headerDegree">{degree}</h3>
                     <h5 className="headerUni">{university}</h5>
                     <h5 className="headerLocal">{location}</h5>

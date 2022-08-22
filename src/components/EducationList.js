@@ -9,6 +9,7 @@ export class EducationList extends React.Component{
         this.onEditButton = this.onEditButton.bind(this);
         this.onSubmitButton = this.onSubmitButton.bind(this);
         this.onAddButton = this.onAddButton.bind(this);
+        this.onDeleteButton = this.onDeleteButton.bind(this);
     }
 
     onEditButton(e){
@@ -23,6 +24,10 @@ export class EducationList extends React.Component{
         this.props.onAddButton(e);
     }
 
+    onDeleteButton(e){
+        this.props.onDeleteButton(e);
+    }
+
     render(){
         const education = this.props.info;
         const keys = Object.keys(education);
@@ -35,7 +40,8 @@ export class EducationList extends React.Component{
                 <Education 
                     info={education[k]} 
                     onEditButton = {this.onEditButton} 
-                    onSubmitButton = {this.onSubmitButton}>
+                    onSubmitButton = {this.onSubmitButton}
+                    onDeleteBtn = {this.onDeleteButton}>
                 </Education>
             );
         });

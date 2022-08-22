@@ -32,12 +32,8 @@ export class Experience extends React.Component{
         if(editMode === 'off'){
             toRender.push(
                 <div id={id}>
-                    <button className='editExpBtn' onClick={this.onEditButton}>Edit</button>
-                    {id.substring(0,3) !== 'def' && 
-                    <button 
-                    style={{backgroundColor:"red"}}  
-                    className="deleteExpBtn"
-                    onClick={this.onDeleteButton}>Delete</button>}
+                    <button className='editExpBtn' onClick={this.onEditButton}>Edit</button> 
+                    <button className="deleteExpBtn" onClick={this.onDeleteButton}>Delete</button>
                     <h3 className="expPos">{position}</h3>
                     <h5 className="expCom">{company}</h5>
                     <h5 className="expDate">{startDateJob} - {endDateJob}</h5>
