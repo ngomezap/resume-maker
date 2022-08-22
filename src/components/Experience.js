@@ -9,6 +9,7 @@ export class Experience extends React.Component{
         super(props);
         this.onEditButton = this.onEditButton.bind(this);
         this.onSubmitButton = this.onSubmitButton.bind(this);
+        this.onDeleteButton = this.onDeleteButton.bind(this);
     }
 
     onEditButton(e){
@@ -19,6 +20,10 @@ export class Experience extends React.Component{
         this.props.onSubmitButton(e);
     }
 
+    onDeleteButton(e){
+        this.props.onDeleteBtn(e);
+    }
+    
 
     render(){
         const {position, company, startDateJob, endDateJob, description, editMode, id} = this.props.info;
@@ -28,6 +33,11 @@ export class Experience extends React.Component{
             toRender.push(
                 <div id={id}>
                     <button className='editExpBtn' onClick={this.onEditButton}>Edit</button>
+                    {id.substring(0,3) !== 'def' && 
+                    <button 
+                    style={{backgroundColor:"red"}}  
+                    className="deleteExpBtn"
+                    onClick={this.onDeleteButton}>Delete</button>}
                     <h3 className="expPos">{position}</h3>
                     <h5 className="expCom">{company}</h5>
                     <h5 className="expDate">{startDateJob} - {endDateJob}</h5>

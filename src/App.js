@@ -17,6 +17,7 @@ class App extends React.Component {
     this.onEditBtn = this.onEditBtn.bind(this);
     this.onSubmitButton = this.onSubmitButton.bind(this);
     this.onAddBtn = this.onAddBtn.bind(this);
+    this.onDeleteBtn = this.onDeleteBtn.bind(this);
     this.state = {
       experience: {
         defaultExp: defaultExp
@@ -73,19 +74,40 @@ class App extends React.Component {
   }
 
   onEditBtn(e){
+    
+    //Get the section (Education, Experience, etc)
     let section = e.target.parentNode.parentNode.id;
+    //Get the specific subsection id
     let key = e.target.parentNode.id;
-    let obj = {};
 
+    //Fill the created obj with the current state
+    let obj = {};
     Object.assign(obj, this.state[section]);
 
+    //change the editMode state of the selected subsection
     obj[key]["editMode"] = 'on';
 
     this.setState({
       [section]: obj
     })
+
+    //it is necessary to stop propagation so the ADD listenes do not trigger
     e.stopPropagation();
 
+  }
+
+  onDeleteBtn(e){
+
+    let section = e.target.parentNode.parentNode.id;
+    let key = e.target.parentNode.id;
+
+    let obj = {};
+    Object.assign(obj, this.state[section]);
+    delete obj[key];
+
+    this.setState({
+      [section]: obj
+    })
   }
 
   onAddBtn(e){
@@ -137,7 +159,8 @@ class App extends React.Component {
           info={experience} 
           onEditButton = {this.onEditBtn} 
           onSubmitButton = {this.onSubmitButton}
-          onAddButton = {this.onAddBtn}/>
+          onAddButton = {this.onAddBtn}
+          onDeleteButton = {this.onDeleteBtn}/>
         </div>
         <MyDocument info={this.state}></MyDocument>
       </div>
