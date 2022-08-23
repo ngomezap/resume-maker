@@ -12,7 +12,7 @@
     column-gap: 5%;
 }
 
-#headInfo button{
+#submitHeadBtn, #editHeadBtn{
     margin-left: auto;
     grid-column: 1 / 13;
     grid-row: 1;
@@ -25,6 +25,20 @@
     grid-column: 1;
     grid-row: 2 / span 4;
     margin-left: 10%;
+    border-radius: 50%;
+    padding-bottom: 15px;
+}
+
+input[type='file']{
+    display: none;
+}
+
+
+.updateBtn{
+    margin-top: 10px;
+    background-color: rgb(89, 185, 94);
+    padding-top: 3px;
+    width: 70%;
 }
 
 #nameHeader, .name{

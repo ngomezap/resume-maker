@@ -50,7 +50,8 @@ const styles = StyleSheet.create({
         //backgroundColor: 'rgb(243, 242, 165)'
     },
     avatar: {
-        height: '100%'
+        height: '100%',
+        borderRadius: '50%'
     },
     viewer: {
         width: window.innerWidth/1.3,

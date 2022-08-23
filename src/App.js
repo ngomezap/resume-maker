@@ -18,6 +18,7 @@ class App extends React.Component {
     this.onSubmitButton = this.onSubmitButton.bind(this);
     this.onAddBtn = this.onAddBtn.bind(this);
     this.onDeleteBtn = this.onDeleteBtn.bind(this);
+    this.onUpdatePhoto = this.onUpdatePhoto.bind(this);
     this.state = {
       experience: {
         defaultExp: defaultExp
@@ -33,6 +34,21 @@ class App extends React.Component {
         defaultEdu: defaultEdu
       }
     }
+  }
+
+  onUpdatePhoto(e){
+    
+    let obj = {};
+    Object.assign(obj, this.state['headInfo']);
+    obj['defaultHead']['imgSrc'] = URL.createObjectURL(e.target.files[0]);
+    
+
+    this.setState({
+      'headInfo': obj
+    });
+
+    console.log(this.state)
+    e.stopPropagation();
   }
 
 
@@ -145,7 +161,8 @@ class App extends React.Component {
         <Header 
           info={headInfo} 
           onEditButton = {this.onEditBtn} 
-          onSubmitButton = {this.onSubmitButton}/>
+          onSubmitButton = {this.onSubmitButton}
+          onUpdatePhoto = {this.onUpdatePhoto}/>
         <Side 
           info={sideInfo} 
           onEditButton = {this.onEditBtn} 

@@ -1,5 +1,6 @@
 import React from "react";
 import '../styles/Header.css';
+import { FaUserEdit } from "react-icons/fa";
 
 export class Header extends React.Component{
 
@@ -7,7 +8,12 @@ export class Header extends React.Component{
         super(props);
         this.onEditButton = this.onEditButton.bind(this);
         this.onSubmitButton = this.onSubmitButton.bind(this);
+        this.onUpdatePhoto = this.onUpdatePhoto.bind(this);
     };
+
+    onUpdatePhoto(e){
+        this.props.onUpdatePhoto(e);
+    }
 
     onEditButton(e){
         this.props.onEditButton(e);
@@ -29,6 +35,7 @@ export class Header extends React.Component{
                     <h1 id="nameHeader">{name}</h1>
                     <h4 id="positionHeader">{currentPosition}</h4>
                     <p id="descHeader">{descHeader}</p>
+                    
                 </div>
             )
         }else{
@@ -39,6 +46,12 @@ export class Header extends React.Component{
                     <input className='name' type='text' defaultValue={name} autoFocus/>
                     <input className='currentPosition' type='text' defaultValue={currentPosition}/>
                     <textarea className='descInput' defaultValue={descHeader}></textarea>
+                    <label className='updateBtn'>
+                        <input type="file"  onChange={this.onUpdatePhoto}></input>
+                        <FaUserEdit style={{width: '30%'}}></FaUserEdit>
+                        Update Pic
+                    </label>
+                    
                 </div>
             )
         }
