@@ -38,7 +38,7 @@ export class Header extends React.Component{
                     <img className='profilePic' src={imgSrc} alt='profile_pic'/>
                     <input className='name' type='text' defaultValue={name} autoFocus/>
                     <input className='currentPosition' type='text' defaultValue={currentPosition}/>
-                    <textarea defaultValue={descHeader}></textarea>
+                    <textarea className='descInput' defaultValue={descHeader}></textarea>
                 </div>
             )
         }

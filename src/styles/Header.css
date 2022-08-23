@@ -39,7 +39,7 @@
     align-self: center;
 }
 
-#descHeader{
+#descHeader, .descInput{
     grid-column: 2 / span 11;
     grid-row: 4 / span 2;
     align-self: center;
