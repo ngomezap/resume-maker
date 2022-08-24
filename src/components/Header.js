@@ -49,7 +49,7 @@ export class Header extends React.Component{
                     <label className='updateBtn'>
                         <input type="file"  onChange={this.onUpdatePhoto}></input>
                         <FaUserEdit style={{width: '30%'}}></FaUserEdit>
-                        Update Pic
+                        Photo
                     </label>
                     
                 </div>

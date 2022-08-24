@@ -33,12 +33,15 @@ input[type='file']{
     display: none;
 }
 
-
 .updateBtn{
     margin-top: 10px;
     background-color: rgb(89, 185, 94);
     padding-top: 3px;
     width: 70%;
+}
+
+.updateBtn:hover{
+    background-color: rgb(56, 163, 62);
 }
 
 #nameHeader, .name{
