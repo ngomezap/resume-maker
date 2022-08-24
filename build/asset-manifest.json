@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/resume-maker/static/css/main.b6d3ce88.css",
+    "main.js": "/resume-maker/static/js/main.1c6d28d0.js",
+    "static/media/Nunito-VariableFont_wght.ttf": "/resume-maker/static/media/Nunito-VariableFont_wght.4a3eef3e0a61b7eb3eda.ttf",
+    "static/media/Nunito-Light.ttf": "/resume-maker/static/media/Nunito-Light.0ec468f65958d1263b60.ttf",
+    "static/media/avatar.png": "/resume-maker/static/media/avatar.847b30c8c1baf47a00f8.png",
+    "static/media/linkedin.png": "/resume-maker/static/media/linkedin.f249b38224ca41a0b909.png",
+    "static/media/phone.png": "/resume-maker/static/media/phone.20a0ed4204215b0502d9.png",
+    "index.html": "/resume-maker/index.html",
+    "main.b6d3ce88.css.map": "/resume-maker/static/css/main.b6d3ce88.css.map",
+    "main.1c6d28d0.js.map": "/resume-maker/static/js/main.1c6d28d0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b6d3ce88.css",
+    "static/js/main.1c6d28d0.js"
+  ]
+}
