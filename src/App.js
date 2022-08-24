@@ -157,6 +157,7 @@ class App extends React.Component {
     const {headInfo, sideInfo, education, experience} = this.state;
     return (
       <div>
+        <MyDocument info={this.state}></MyDocument>
         <div id="container">
         <Header 
           info={headInfo} 
@@ -180,7 +181,6 @@ class App extends React.Component {
           onAddButton = {this.onAddBtn}
           onDeleteButton = {this.onDeleteBtn}/>
         </div>
-        <MyDocument info={this.state}></MyDocument>
       </div>
     );
   }

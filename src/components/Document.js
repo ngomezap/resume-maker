@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet, PDFViewer, Image, Svg, Line } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, Image, Svg, Line } from '@react-pdf/renderer';
 import source from '../fonts/Nunito-Light.ttf';
 import { Font } from '@react-pdf/renderer';
 import mailIcon from '../images/mail.png';
@@ -101,6 +101,13 @@ const styles = StyleSheet.create({
     },
     currentPosition:{
         marginLeft: '5%',
+    },
+    downloadBtn: {
+        backgroundColor: 'rgb(89, 185, 94)',
+        width: '15%',
+        textAlign: 'center',
+        marginBottom: '10px',
+        border: 'black solid 1px'
     }
 
   });
@@ -137,40 +144,48 @@ export class MyDocument extends React.Component{
         })
 
 
+        const MyDoc = () => (
+            <Document>
+                <Page wrap={false} size="A4" style={styles.page} >
+                    <View style={styles.header}>
+                        <Image src={headInfo.defaultHead.imgSrc} style={styles.avatar}></Image>
+                        <Text style={styles.name}>{headInfo.defaultHead.name}</Text>
+                        <Text style={styles.currentPosition}>{headInfo.defaultHead.currentPosition}</Text>
+                        <Text style={styles.headerDesc}>{headInfo.defaultHead.descHeader}</Text>
+                        <Svg height="3" width="600" style={{marginTop: '20px'}}>
+                            <Line x1="40" y1="0" x2="350" y2="0" strokeWidth={2} stroke="rgb(0,0,0)"/>
+                        </Svg>
+                    </View>
+                    <View style={styles.leftSide}>
+                        <Image style={styles.icon} src={mailIcon}></Image>
+                        <Text>{sideInfo.defaultSide.mail}</Text>
+                        <Image style={styles.icon} src={phoneIcon}></Image>
+                        <Text>{sideInfo.defaultSide.phone}</Text>
+                        <Image style={styles.icon} src={linkedinIcon}></Image>
+                        <Text>{sideInfo.defaultSide.linkedin}</Text>
+                    </View>
+                    <View style={styles.rightSide}>
+                        <View style={styles.education}>
+                            <Text style={{fontSize: '22px'}}>Education</Text>
+                            {renderEdu}
+                        </View>
+                        <View style={styles.experience}>
+                            <Text style={{fontSize: '22px'}}>Experience</Text>
+                            {renderExp}
+                        </View>
+                    </View>
+                </Page>
+            </Document>
+        )
+
         return (
-            <PDFViewer style={styles.viewer}>
-                <Document>
-                    <Page wrap={false} size="A4" style={styles.page} >
-                        <View style={styles.header}>
-                            <Image src={headInfo.defaultHead.imgSrc} style={styles.avatar}></Image>
-                            <Text style={styles.name}>{headInfo.defaultHead.name}</Text>
-                            <Text style={styles.currentPosition}>{headInfo.defaultHead.currentPosition}</Text>
-                            <Text style={styles.headerDesc}>{headInfo.defaultHead.descHeader}</Text>
-                            <Svg height="3" width="600" style={{marginTop: '20px'}}>
-                                <Line x1="40" y1="0" x2="350" y2="0" strokeWidth={2} stroke="rgb(0,0,0)"/>
-                            </Svg>
-                        </View>
-                        <View style={styles.leftSide}>
-                            <Image style={styles.icon} src={mailIcon}></Image>
-                            <Text>{sideInfo.defaultSide.mail}</Text>
-                            <Image style={styles.icon} src={phoneIcon}></Image>
-                            <Text>{sideInfo.defaultSide.phone}</Text>
-                            <Image style={styles.icon} src={linkedinIcon}></Image>
-                            <Text>{sideInfo.defaultSide.linkedin}</Text>
-                        </View>
-                        <View style={styles.rightSide}>
-                            <View style={styles.education}>
-                                <Text style={{fontSize: '22px'}}>Education</Text>
-                                {renderEdu}
-                            </View>
-                            <View style={styles.experience}>
-                                <Text style={{fontSize: '22px'}}>Experience</Text>
-                                {renderExp}
-                            </View>
-                        </View>
-                    </Page>
-                </Document>
-            </PDFViewer>
+            <div style={styles.downloadBtn}>
+                <PDFDownloadLink document={<MyDoc />} fileName="resume.pdf">
+                    {({ blob, url, loading, error }) =>
+                        loading ? 'Loading document...' : 'Download now!'
+                    }
+                </PDFDownloadLink>
+            </div>
         );
     }
 } 
